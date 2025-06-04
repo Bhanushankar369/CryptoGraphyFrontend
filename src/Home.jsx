@@ -1,43 +1,57 @@
-import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
-import App from './App';
-import Ceasar from './components/substitution Techniques/caesarCipher';
-import Playfair from './components/substitution Techniques/playFair';
-import Hill from './components/substitution Techniques/hillCipher';
-import OTP from './components/substitution Techniques/oneTimePad';
-import Railfence from './components/Transposition Techniques/railFence';
-import MyszkowskiCipher from './components/Transposition Techniques/myszkowskiCipher';
-import RouteCipher from './components/Transposition Techniques/routeCipher';
-import Scytale from './components/Transposition Techniques/scytaleCipher';
-import DES from './components/Symmetric Key Encryption/DataEncryptionStandard';
-import AES from './components/Symmetric Key Encryption/AdvancedEncryptionStandard';
-import Rives from './components/Symmetric Key Encryption/RivesCipher';
-import RSA from './components/Asymmetric Key Encryption/RivestShamirAdleman';
-import EllipticCurve from './components/Asymmetric Key Encryption/EllipticCurve';
-import Elgamal from './components/Asymmetric Key Encryption/ElGamal';
-import PasswordCrack from './components/passwordCrack';
+import React from 'react'
+import './App.css'
+import { useNavigate } from 'react-router-dom';
 
-function Home(){
-    return(
-        <Router>
-            <Routes>
-                <Route path="/" element={<App />}></Route>
-                <Route path="/ceasar" element={<Ceasar />}></Route>
-                <Route path="/playfair" element={<Playfair />}></Route>
-                <Route path="/hill" element={<Hill />}></Route>
-                <Route path="/otp" element={<OTP />}></Route>
-                <Route path="/railfence" element={<Railfence />}></Route>
-                <Route path="/myszkowski" element={<MyszkowskiCipher />}></Route>
-                <Route path="/routecipher" element={<RouteCipher/>}></Route>
-                <Route path="/scytale" element={<Scytale />}></Route>
-                <Route path="/des" element={<DES />}></Route>
-                <Route path="/aes" element={<AES/>}></Route>
-                <Route path="/rives" element={<Rives />}></Route>
-                <Route path="/rsa" element={<RSA />}></Route>
-                <Route path="/ellipticcurve" element={<EllipticCurve/>}></Route>
-                <Route path="/elgamal" element={<Elgamal />}></Route>
-                <Route path="/passwordstrength" element={<PasswordCrack/>}></Route>
-            </Routes>
-        </Router>
-    );
+function Home() {
+    const navigate = useNavigate();
+  return (
+    <div className="home">
+        <nav className="navbar">
+            <div className="logo heading" onClick={() => navigate('/')}>CG</div>
+            <div className="contents">
+                <button className="Stength_calc" onClick={() => navigate('/passwordstrength')}>Password Strength Calc</button>
+                <button className="about_page">About Page</button>
+                <button className="about_creator">About Creator</button>
+            </div>
+        </nav>
+        <div className="container">
+            <div className="substitution heading">
+                <div className="title">Substitution Techniques</div>
+                <div className="buttons">
+                    <button className="caesar_cipher" onClick={() => navigate('/ceasar')}>Caesar Cipher</button>
+                    <button className="playfair_cipher" onClick={() => navigate('/playfair')}>Playfair Cipher</button>
+                    <button className="hill_cipher" onClick={() => navigate('/hill')}>Hill Cipher</button>
+                    <button className="onetimepad" onClick={() => navigate('/otp')}>One Time PAD</button>
+                </div>
+            </div>
+            <div className="transposition heading">
+                <div className="title">Transposition Techniques</div>
+                <div className="buttons">
+                    <button className="railfence_cipher" onClick={() => navigate('/railfence')}>Rail Fence Cipher</button>
+                    <button className="myszkowski-cipher" onClick={() => navigate('/myszkowski')}>Myszkowski Cipher</button>
+                    <button className="route_cipher" onClick={() => navigate('/routecipher')}>Route Cipher</button>
+                    <button className="scytale-Cipher" onClick={() => navigate('/scytale')}>Scytale Cipher</button>
+                </div>
+            </div>
+            <div className="SKE heading">
+                <div className="title">Symmetric Key Encryption Techniques</div>
+                <div className="buttons">
+                    <button className="DES" onClick={() => navigate('/des')}>Data Encryption Standard</button>
+                    <button className="AES" onClick={() => navigate('/aes')}>Advanced Encryption Standard</button>
+                    <button className="rives_cipher" onClick={() => navigate('/rives')}>Rives Cipher 4(RC4)</button>
+                </div>
+            </div>
+            <div className="AKE heading">
+                <div className="title">Asymmetric Key Encryption Techniques</div>
+                <div className="buttons">
+                    <button className="RSA" onClick={() => navigate('/rsa')}>Rivest Shamir Adleman</button>
+                    <button className="ECC" onClick={() => navigate('/ellipticcurve')}>Elliptic Curve Cryptography</button>
+                    <button className="elgamal" onClick={() => navigate('/elgamal')}>ElGamal</button>
+                </div>
+            </div>
+        </div>
+    </div>
+  )
 }
+
 export default Home;
